@@ -46,22 +46,7 @@ var UserSchema = new Schema({
     bio: {
         type: String,
         required: false,
-    },
-    portolios: [
-        {
-            name: {
-                type: String,
-                lowercase: true,
-                required: true,
-                unique: true
-            },
-            assets: [{
-                symbol: String,
-                shares: Number
-            }],
-            cash: {type: Number}
-        }
-    ]
+    }
 });
 
 // User Methods
