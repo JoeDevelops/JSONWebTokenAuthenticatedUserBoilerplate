@@ -78,9 +78,18 @@ auth.register = function(req, res, next){
 auth.login = function(req, res, next){
     var username = req.sanitize(req.body.username).toLowerCase();
     var password = req.sanitize(req.body.password);
+    console.log(password);
 
     User.findOne({username:username}, function(err, user){
-        user.comparePassword(password, function(err, match){
+        if(!user){
+                return res.status(400).send(
+                    {
+                        error: err,
+                        message: 'Invalid Credentials.'
+                    }
+                );
+            }
+        user.comparePassword(req.body.password, function(err, match){
             if(err){
                 return res.status(400).send(
                     {

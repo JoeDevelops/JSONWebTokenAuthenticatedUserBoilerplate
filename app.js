@@ -34,7 +34,7 @@ app.use(helmet());
 // Routing
 var index = require('./routes/index');
 var auth = require('./routes/auth');
-p
+
 app.use('/api', index);
 app.use('/api/auth', auth);
 
